@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: us-central1-docker.pkg.dev/pk-sandbox/travelbooking/user-service
-  tag: "latest"
+  tag: "bc551cc45f84d19ea629c4df5a1a6447c1f9f31e"
   pullPolicy: Always
 
 service:
