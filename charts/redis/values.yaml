@@ -3,7 +3,9 @@ redis:
   auth:
     enabled: false
   image:
-    tag: "7.4"
+    registry: docker.io
+    repository: bitnami/redis
+    tag: "7.4.1"
   master:
     persistence:
       size: 2Gi

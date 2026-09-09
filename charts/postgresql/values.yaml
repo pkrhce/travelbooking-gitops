@@ -3,7 +3,9 @@ postgresql:
     postgresPassword: "travelbooking123"
     database: "travelbooking"
   image:
-    tag: "16"
+    registry: docker.io
+    repository: bitnami/postgresql
+    tag: "16.6.0"
   primary:
     persistence:
       size: 5Gi
