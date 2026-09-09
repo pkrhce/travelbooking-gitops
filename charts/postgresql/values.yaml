@@ -1,0 +1,7 @@
+postgresql:
+  auth:
+    postgresPassword: "travelbooking123"
+    database: "travelbooking"
+  primary:
+    persistence:
+      size: 5Gi

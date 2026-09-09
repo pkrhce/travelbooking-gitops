@@ -1,0 +1,5 @@
+falco:
+  driver:
+    kind: ebpf
+  falcosidekick:
+    enabled: true
