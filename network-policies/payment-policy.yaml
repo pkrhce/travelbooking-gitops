@@ -1,0 +1,22 @@
+# Payment Service: Only accepts traffic from Booking Service
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: payment-service-policy
+  namespace: travelbooking
+spec:
+  endpointSelector:
+    matchLabels:
+      app: payment-service
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: booking-service
+      toPorts:
+        - ports:
+            - port: "8084"
+              protocol: TCP
+          rules:
+            http:
+              - method: POST
+                path: "/api/payment"

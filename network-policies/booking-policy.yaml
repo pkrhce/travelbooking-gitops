@@ -1,0 +1,28 @@
+# Booking Service: Accepts from Frontend, talks to Payment + Notification
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: booking-service-policy
+  namespace: travelbooking
+spec:
+  endpointSelector:
+    matchLabels:
+      app: booking-service
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: frontend
+      toPorts:
+        - ports:
+            - port: "8083"
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app: payment-service
+    - toEndpoints:
+        - matchLabels:
+            app: notification-service
+    - toEndpoints:
+        - matchLabels:
+            app: search-service

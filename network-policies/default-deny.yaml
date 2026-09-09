@@ -1,0 +1,13 @@
+# Default deny all ingress traffic — zero trust baseline
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: travelbooking
+spec:
+  endpointSelector: {}
+  ingress:
+    - {}
+  ingressDeny:
+    - fromEntities:
+        - world
