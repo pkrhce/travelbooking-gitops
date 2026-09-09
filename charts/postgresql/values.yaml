@@ -1,2 +1,2 @@
 image: postgres:16-alpine
-password: travelbooking123
+password: postgres
