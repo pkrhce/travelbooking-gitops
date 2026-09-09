@@ -1,0 +1,11 @@
+{{- $services := list "booking" "search" "user" "payment" "notification" }}
+{{- range $services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-{{ . }}
+spec:
+  type: ExternalName
+  externalName: postgresql.travelbooking.svc.cluster.local
+{{- end }}

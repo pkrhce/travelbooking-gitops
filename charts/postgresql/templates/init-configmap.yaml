@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-init
+data:
+  init.sql: |
+    CREATE DATABASE bookingdb;
+    CREATE DATABASE searchdb;
+    CREATE DATABASE userdb;
+    CREATE DATABASE paymentdb;
+    CREATE DATABASE notificationdb;
