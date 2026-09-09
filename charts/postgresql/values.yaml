@@ -2,6 +2,8 @@ postgresql:
   auth:
     postgresPassword: "travelbooking123"
     database: "travelbooking"
+  image:
+    tag: "16"
   primary:
     persistence:
       size: 5Gi
