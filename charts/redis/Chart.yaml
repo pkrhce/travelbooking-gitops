@@ -3,7 +3,3 @@ name: redis
 description: Redis cache
 type: application
 version: 0.1.0
-dependencies:
-  - name: redis
-    version: "20.3.0"
-    repository: https://charts.bitnami.com/bitnami
