@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: us-central1-docker.pkg.dev/pk-sandbox-507311/travelbooking/frontend
-  tag: "bc551cc45f84d19ea629c4df5a1a6447c1f9f31e"
+  tag: "0982e42c1e1202502fec30928711695c4892bfd4"
   pullPolicy: Always
 
 service:
