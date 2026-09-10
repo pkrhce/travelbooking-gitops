@@ -13,6 +13,8 @@ spec:
     targetRevision: "0.108.0"
     helm:
       values: |
+        image:
+          repository: otel/opentelemetry-collector-contrib
         mode: daemonset
         config:
           receivers:
@@ -24,7 +26,7 @@ spec:
                   endpoint: 0.0.0.0:4318
           exporters:
             otlp:
-              endpoint: "jaeger-allInOne.observability.svc.cluster.local:4317"
+              endpoint: "jaeger.observability.svc.cluster.local:4317"
               tls:
                 insecure: true
           service:

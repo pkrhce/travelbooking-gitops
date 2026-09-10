@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://falcosecurity.github.io/charts
     chart: falco
-    targetRevision: "4.16.5"
+    targetRevision: "4.16.4"
     helm:
       values: |
         driver:
