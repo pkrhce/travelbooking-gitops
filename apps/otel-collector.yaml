@@ -8,12 +8,30 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/pkrhce/travelbooking-gitops.git
-    targetRevision: main
-    path: charts/otel-collector
+    repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
+    chart: opentelemetry-collector
+    targetRevision: "0.108.0"
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        mode: daemonset
+        config:
+          receivers:
+            otlp:
+              protocols:
+                grpc:
+                  endpoint: 0.0.0.0:4317
+                http:
+                  endpoint: 0.0.0.0:4318
+          exporters:
+            otlp:
+              endpoint: "jaeger-allInOne.observability.svc.cluster.local:4317"
+              tls:
+                insecure: true
+          service:
+            pipelines:
+              traces:
+                receivers: [otlp]
+                exporters: [otlp]
   destination:
     server: https://kubernetes.default.svc
     namespace: observability
@@ -23,9 +41,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-    retry:
-      limit: 3
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m

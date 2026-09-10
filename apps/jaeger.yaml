@@ -8,12 +8,25 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/pkrhce/travelbooking-gitops.git
-    targetRevision: main
-    path: charts/jaeger
+    repoURL: https://jaegertracing.github.io/helm-charts
+    chart: jaeger
+    targetRevision: "3.4.1"
     helm:
-      valueFiles:
-        - values.yaml
+      values: |
+        provisionDataStore:
+          cassandra: false
+        allInOne:
+          enabled: true
+          ingress:
+            enabled: false
+        storage:
+          type: memory
+        collector:
+          enabled: false
+        query:
+          enabled: false
+        agent:
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: observability
@@ -23,9 +36,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-    retry:
-      limit: 3
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m

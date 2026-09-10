@@ -8,9 +8,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/pkrhce/travelbooking-gitops.git
-    targetRevision: main
-    path: charts/falco
+    repoURL: https://falcosecurity.github.io/charts
+    chart: falco
+    targetRevision: "4.16.5"
+    helm:
+      values: |
+        driver:
+          kind: modern_ebpf
+        falcosidekick:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: falco
